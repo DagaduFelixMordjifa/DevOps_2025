@@ -17,26 +17,26 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
 
     steps:
-      - name: Checkout repo
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Terraform
+      - name: 🛠️ Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.5.7
 
       - name: Terraform Format Check
-        run: terraform fmt check -recursive
+        run: terraform fmt -check -recursive
 
-      - name: Terraform Init
+      - name: 📦 Terraform Init
         run: terraform init
 
-      - name: Terraform Validate
+      - name: ✅ Terraform Validate
         run: terraform validate
 
-      - name: Terraform Plan
+      - name: 🧠 Terraform Plan
         run: terraform plan
 
-      - name: Terraform Apply (Main only)
+      - name: 🚀 Terraform Apply (Main only)
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
