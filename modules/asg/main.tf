@@ -5,7 +5,7 @@ resource "aws_launch_template" "web" {
 
   network_interfaces {
     associate_public_ip_address = false
-    security_groups = [aws_security_group.asg_sg.id]
+    security_groups             = [aws_security_group.asg_sg.id]
   }
 
   user_data = base64encode(<<EOF
